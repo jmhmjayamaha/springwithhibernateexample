@@ -26,8 +26,9 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	public List<Person> getAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return personDao.getAllPersons();
+		
 	}
 
 	public Person getPerson(int pid) {

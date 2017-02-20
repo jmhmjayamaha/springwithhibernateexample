@@ -5,8 +5,10 @@
 
 package lk.harshana.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -49,8 +51,23 @@ public class PersonDAOImpl implements PersonDAO {
 	 * @see lk.harshana.dao.def.PersonDAO#getAllPersons()
 	 */
 	public List<Person> getAllPersons() {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = HibernateConfig.sessionFactory.openSession();
+		Transaction t = null;
+		List<Person> list = new ArrayList<Person>();
+		try {
+			t = session.beginTransaction();
+			
+			list = session.createQuery("FROM Person").list();
+			
+			t.commit();
+		} catch(HibernateException e ) {
+			if(t != null ) {
+				t.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return list;
 	}
 
 	/* (non-Javadoc)
