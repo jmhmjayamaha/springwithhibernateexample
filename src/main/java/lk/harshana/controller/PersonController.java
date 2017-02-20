@@ -8,6 +8,7 @@ package lk.harshana.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,10 +31,17 @@ public class PersonController {
 
 	}
 	
-	@RequestMapping(value="persons", method=RequestMethod.GET)
+	@RequestMapping(value="/persons", method=RequestMethod.GET)
 	public List<Person> getAllPersons() {
 		
 		return personService.getAllPersons();
+		
+	}
+	
+	@RequestMapping(value="/persons/{pid}", method=RequestMethod.GET)
+	public Person getPerson(@PathVariable("pid") final int pid) {
+		
+		return personService.getPerson(pid);
 		
 	}
 }

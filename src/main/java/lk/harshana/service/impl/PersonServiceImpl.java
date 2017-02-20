@@ -31,17 +31,17 @@ public class PersonServiceImpl implements PersonService{
 		
 	}
 
-	public Person getPerson(int pid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Person getPerson(final int pid) {
+		
+		return personDao.getPerson(pid);
 	}
 
-	public void updatePerson(Person person) {
+	public void updatePerson(final Person person) {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public void deletePerson(int pid) {
+	public void deletePerson(final int pid) {
 		// TODO Auto-generated method stub
 		
 	}

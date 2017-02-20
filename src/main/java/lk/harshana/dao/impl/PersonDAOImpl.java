@@ -73,15 +73,30 @@ public class PersonDAOImpl implements PersonDAO {
 	/* (non-Javadoc)
 	 * @see lk.harshana.dao.def.PersonDAO#getPerson(int)
 	 */
-	public Person getPerson(int pid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Person getPerson(final int pid) {
+		Session session = HibernateConfig.sessionFactory.openSession();
+		Transaction t = null;
+		Person person = null;
+		try {
+			t = session.beginTransaction();
+			
+			person = session.find(Person.class, new Integer(pid));
+			
+			t.commit();
+		} catch(HibernateException e ) {
+			if(t != null ) {
+				t.rollback();
+			}
+		} finally {
+			session.close();
+		}
+		return person;
 	}
 
 	/* (non-Javadoc)
 	 * @see lk.harshana.dao.def.PersonDAO#updatePerson(lk.harshana.model.Person)
 	 */
-	public void updatePerson(Person person) {
+	public void updatePerson(final Person person) {
 		// TODO Auto-generated method stub
 		
 	}
