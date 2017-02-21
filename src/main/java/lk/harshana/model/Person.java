@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name="person")
-public class Person {
+public class Person extends BaseEntity {
 
 	/** The pid. */
 	@Id
