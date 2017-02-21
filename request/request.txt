@@ -1,0 +1,47 @@
+/////////////////////////////////////////////////////////////
+add person
+
+http://localhost:8080/person/info/addPerson
+
+{
+	"pid" : 1,
+	"firstName" : "Harshana",
+	"lastName"  : "Madusanka",
+	"address" : "Kohombadeniya",
+	"age" : 28,
+	"telNo" : "+940774231747"
+}
+
+//////////////////////////////////////////////////////////////
+get all person
+
+http://localhost:8080/person/info/persons
+
+/////////////////////////////////////////////////////////////
+find a person
+
+
+http://localhost:8080/person/info/persons/{pid}
+
+/////////////////////////////////////////////////////////////
+update a person
+
+http://localhost:8080/person/info/updatePerson
+
+
+{
+	"pid" : 1,
+	"firstName" : "Harshana Madusanka",
+	"lastName"  : "Madusanka",
+	"address" : "Dorawaka",
+	"age" : 28,
+	"telNo" : "+940778900730"
+}
+
+/////////////////////////////////////////////////////////////
+
+http://localhost:8080/person/info/deletePerson/{pid}
+
+
+
+
