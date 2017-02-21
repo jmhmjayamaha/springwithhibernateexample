@@ -8,7 +8,6 @@ package lk.harshana.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -37,7 +36,7 @@ public class PersonDAOImpl implements PersonDAO {
 			session.save(person);
 			
 			t.commit();
-		} catch(HibernateException e) {
+		} catch(Exception e) {
 			if(t != null) {
 				t.rollback();
 			}
@@ -97,7 +96,23 @@ public class PersonDAOImpl implements PersonDAO {
 	 * @see lk.harshana.dao.def.PersonDAO#updatePerson(lk.harshana.model.Person)
 	 */
 	public void updatePerson(final Person person) {
-		// TODO Auto-generated method stub
+		
+		Session session = HibernateConfig.sessionFactory.openSession();
+		Transaction t = null;
+		
+		try {
+			t = session.beginTransaction();
+			
+			session.update(person);
+			
+			t.commit();
+		} catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+			}
+		} finally {
+			session.close();
+		}
 		
 	}
 
@@ -105,7 +120,23 @@ public class PersonDAOImpl implements PersonDAO {
 	 * @see lk.harshana.dao.def.PersonDAO#deletePerson(lk.harshana.model.Person)
 	 */
 	public void deletePerson(final int pid) {
-		// TODO Auto-generated method stub
+		
+		Session session = HibernateConfig.sessionFactory.openSession();
+		Transaction t = null;
+		
+		try {
+			t = session.beginTransaction();
+			
+			session.delete(session.find(Person.class, new Integer(pid)));
+			
+			t.commit();
+		} catch(Exception e) {
+			if(t != null) {
+				t.rollback();
+			}
+		} finally {
+			session.close();
+		}
 		
 	}
 

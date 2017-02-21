@@ -37,12 +37,14 @@ public class PersonServiceImpl implements PersonService{
 	}
 
 	public void updatePerson(final Person person) {
-		// TODO Auto-generated method stub
+		
+		personDao.updatePerson(person);
 		
 	}
 
 	public void deletePerson(final int pid) {
-		// TODO Auto-generated method stub
+		
+		personDao.deletePerson(pid);
 		
 	}
 
